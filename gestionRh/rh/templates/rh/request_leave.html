@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demander un congé</title>
+</head>
+<body>
+    <h1>Demander un congé</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="start_date">Date de début :</label>
+        <input type="date" id="start_date" name="start_date" required><br>
+
+        <label for="end_date">Date de fin :</label>
+        <input type="date" id="end_date" name="end_date" required><br>
+
+        <label for="reason">Raison :</label>
+        <textarea id="reason" name="reason" required></textarea><br>
+
+        <button type="submit">Soumettre</button>
+    </form>
+    <a href="{% url 'employee' %}">Retour au menu</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page Employé</title>
+</head>
+<body>
+    <h1>Bienvenue, {{ user.username }} !</h1>
+    <h2>Menu Employé</h2>
+    <ul>
+        <li><a href="{% url 'request_leave' %}">Poser un congé</a></li>
+        <li><a href="{% url 'view_payslip' %}">Voir ma fiche de paie</a></li>
+        <li><a href="{% url 'logout' %}">Déconnexion</a></li>
+    </ul>
+</body>
+</html>

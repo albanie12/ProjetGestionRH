@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de paie</title>
+</head>
+<body>
+    <h1>Votre fiche de paie</h1>
+    <p>Nom : {{ user.username }}</p>
+    <p>Salaire : 2500 €</p>
+    <p>Date de paiement : 15/01/2025</p>
+    <a href="{% url 'employee' %}">Retour au menu</a>
+</body>
+</html>
