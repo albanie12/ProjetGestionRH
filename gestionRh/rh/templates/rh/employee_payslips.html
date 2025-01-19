@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes fiches de paie</title>
+    <!-- Intégration de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Mes fiches de paie</h1>
+
+        {% if payslips %}
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Mois</th>
+                        <th>Salaire de base</th>
+                        <th>Bonus</th>
+                        <th>Déductions</th>
+                        <th>Salaire total</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for payslip in payslips %}
+                    <tr>
+                        <td>{{ payslip.month|date:"F Y" }}</td>
+                        <td>{{ payslip.base_salary }}</td>
+                        <td>{{ payslip.bonus }}</td>
+                        <td>{{ payslip.deductions }}</td>
+                        <td>{{ payslip.total_salary }}</td>
+                        <td>
+                            <a href="{% url 'download_payslip' payslip.id %}" class="btn btn-primary btn-sm">Télécharger</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <div class="alert alert-info text-center">
+            Aucune fiche de paie disponible.
+        </div>
+        {% endif %}
+
+        <div class="text-center mt-4">
+            <a href="{% url 'employee' %}" class="btn btn-secondary">Retour au menu</a>
+        </div>
+    </div>
+
+    <!-- Intégration de Bootstrap JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

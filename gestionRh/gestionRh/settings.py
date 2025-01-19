@@ -15,7 +15,12 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-LOGIN_REDIRECT_URL = '/employee/'  # Redirige vers la page employee
+# Redirection après connexion (employé)
+LOGIN_REDIRECT_URL = '/employee/'
+
+# Redirection après déconnexion (page principale)
+LOGOUT_REDIRECT_URL = '/'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -51,6 +56,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
 ROOT_URLCONF = 'gestionRh.urls'
 
 TEMPLATES = [
@@ -78,10 +84,15 @@ WSGI_APPLICATION = 'gestionRh.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',  # Backend MySQL
+        'NAME': 'gestion_rh',  # Nom de la base de données
+        'USER': 'root',  # Remplacez par votre nom d'utilisateur MySQL
+        'PASSWORD': 'root',  # Remplacez par votre mot de passe MySQL
+        'HOST': 'localhost',  # Adresse du serveur MySQL (localhost si en local)
+        'PORT': '3306',  # Port MySQL par défaut
     }
 }
+
 
 
 # Password validation
